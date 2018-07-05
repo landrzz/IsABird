@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:behaviors="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core" 
+             xmlns:windows="clr-namespace:Xamarin.Forms.PlatformConfiguration.WindowsSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             Title="Is a Bird?"
+             x:Class="IsBird.Views.MainPage">
+    <ScrollView>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+            <Frame VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="10" BackgroundColor="Silver" IsVisible="{Binding imageShowing}" >
+               <Image x:Name="setImage" Source="{Binding setImage}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Aspect="AspectFit" />
+            </Frame>
+            <Label Text="{Binding FinalWord}" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="EndAndExpand" TextColor="Navy" FontSize="Small" />
+            <ActivityIndicator x:Name="spinner" Color="{StaticResource PrimaryDark}" VerticalOptions="End" HorizontalOptions="Center" IsEnabled="{Binding SpinnerOn}" IsVisible="{Binding SpinnerOn}" IsRunning="{Binding SpinnerOn}"/>
+            <Button Text="( Oh! I see a bird. )" Command="{Binding TakePhotoCommand}" HorizontalOptions="FillAndExpand" VerticalOptions="End" BackgroundColor="{StaticResource PrimaryDark}" TextColor="White" Margin="8" />
+
+            <Entry Placeholder="Type Something Interesting" 
+                   HorizontalOptions="Fill" 
+                   Text="{Binding EntryText}" 
+                   TextColor="{StaticResource PrimaryDark}"   />
+            <Label Text="{Binding EntryText, Converter={StaticResource LowerTextConverter}}" 
+                   TextColor="{StaticResource PrimaryDark}" 
+                   FontSize="Medium" 
+                   HorizontalOptions="CenterAndExpand" 
+                   HorizontalTextAlignment="Center" /> 
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
